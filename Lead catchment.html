@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melbourne Commercial Property - Exclusive Access</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-container {
+            padding: 40px 30px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .question {
+            margin-bottom: 30px;
+        }
+        
+        .question-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-option:hover, .checkbox-option:hover {
+            border-color: #667eea;
+            background: #f8faff;
+        }
+        
+        .radio-option.selected, .checkbox-option.selected {
+            border-color: #667eea;
+            background: #f8faff;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            margin-bottom: 30px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .back-btn {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        @media (max-width: 600px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header, .form-container {
+                padding: 30px 20px;
+            }
+        }
+        
+        .success-page {
+            text-align: center;
+            padding: 60px 30px;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Get Exclusive Access to Melbourne Commercial Properties</h1>
+            <p>See properties 30-60 days before they hit the public market</p>
+            <div class="badge">✓ No obligation • Free service</div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+        </div>
+        
+        <form id="leadForm" class="form-container">
+            <!-- Page 1: Property Type & Intent -->
+            <div class="page active" id="page1">
+                <div class="question">
+                    <div class="question-title">What type of commercial property interests you?</div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'office')">
+                            <input type="radio" name="propertyType" value="office">
+                            <span>Office Space</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'retail')">
+                            <input type="radio" name="propertyType" value="retail">
+                            <span>Retail/Shopfront</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'industrial')">
+                            <input type="radio" name="propertyType" value="industrial">
+                            <span>Industrial/Warehouse</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'investment')">
+                            <input type="radio" name="propertyType" value="investment">
+                            <span>Investment Property</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'land')">
+                            <input type="radio" name="propertyType" value="land">
+                            <span>Land/Development</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-title">Are you looking to:</div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'intent', 'purchase')">
+                            <input type="radio" name="intent" value="purchase">
+                            <span>Purchase</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'intent', 'lease')">
+                            <input type="radio" name="intent" value="lease">
+                            <span>Lease/Rent</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn" onclick="nextPage()" id="page1Next" disabled>Continue</button>
+            </div>
+            
+            <!-- Page 2: Location & Budget -->
+            <div class="page" id="page2">
+                <div class="question">
+                    <div class="question-title">Which Melbourne areas interest you? (Select all that apply)</div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'cbd')">
+                            <input type="checkbox" name="location" value="cbd">
+                            <span>Melbourne CBD</span>
+                        </label>
+                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'innerEast')">
+                            <input type="checkbox" name="location" value="innerEast">
+                            <span>Inner East (Richmond, Prahran, South Yarra)</span>
+                        </label>
+                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'innerWest')">
+                            <input type="checkbox" name="location" value="innerWest">
+                            <span>Inner West (Footscray, Williamstown, Port Melbourne)</span>
+                        </label>
+                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'north')">
+                            <input type="checkbox" name="location" value="north">
+                            <span>North (Preston, Coburg, Brunswick)</span>
+                        </label>
+                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'southEast')">
+                            <input type="checkbox" name="location" value="southEast">
+                            <span>South East (Glen Waverley, Dandenong, Oakleigh)</span>
+                        </label>
+                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'outerSuburbs')">
+                            <input type="checkbox" name="location" value="outerSuburbs">
+                            <span>Outer Suburbs</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-title">Budget range:</div>
+                    <select class="form-input" name="budget" onchange="validatePage2()">
+                        <option value="">Select your budget</option>
+                        <option value="under500k">Under $500,000</option>
+                        <option value="500k-1m">$500,000 - $1,000,000</option>
+                        <option value="1m-2m">$1,000,000 - $2,000,000</option>
+                        <option value="2m-5m">$2,000,000 - $5,000,000</option>
+                        <option value="5m-plus">$5,000,000+</option>
+                        <option value="prefer-not-say">Prefer not to say</option>
+                    </select>
+                </div>
+                
+                <div class="btn-container">
+                    <button type="button" class="back-btn" onclick="prevPage()">Back</button>
+                    <button type="button" class="btn" onclick="nextPage()" id="page2Next" disabled>Continue</button>
+                </div>
+            </div>
+            
+            <!-- Page 3: Timeline & Contact -->
+            <div class="page" id="page3">
+                <div class="question">
+                    <div class="question-title">When do you need to secure a property?</div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline', 'within30')">
+                            <input type="radio" name="timeline" value="within30">
+                            <span>Within 30 days</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline', '1-3months')">
+                            <input type="radio" name="timeline" value="1-3months">
+                            <span>1-3 months</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline', '3-6months')">
+                            <input type="radio" name="timeline" value="3-6months">
+                            <span>3-6 months</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline', '6plus')">
+                            <input type="radio" name="timeline" value="6plus">
+                            <span>6+ months</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline', 'exploring')">
+                            <input type="radio" name="timeline" value="exploring">
+                            <span>Just exploring options</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-title">Your contact details:</div>
+                    <div class="input-row">
+                        <input type="text" class="form-input" name="firstName" placeholder="First Name" oninput="validatePage3()">
+                        <input type="text" class="form-input" name="lastName" placeholder="Last Name" oninput="validatePage3()">
+                    </div>
+                    <br>
+                    <input type="email" class="form-input" name="email" placeholder="Email Address" oninput="validatePage3()">
+                    <br>
+                    <input type="tel" class="form-input" name="phone" placeholder="Phone Number" oninput="validatePage3()">
+                    <br>
+                    <input type="text" class="form-input" name="company" placeholder="Company (Optional)">
+                </div>
+                
+                <div class="btn-container">
+                    <button type="button" class="back-btn" onclick="prevPage()">Back</button>
+                    <button type="button" class="btn" onclick="nextPage()" id="page3Next" disabled>Continue</button>
+                </div>
+            </div>
+            
+            <!-- Page 4: Final Qualifier -->
+            <div class="page" id="page4">
+                <div class="question">
+                    <div class="question-title">Have you been pre-approved for financing or have funds ready?</div>
+                    <div class="radio-group">
+                        <label class="radio-option" onclick="selectRadio(this, 'financing', 'yes')">
+                            <input type="radio" name="financing" value="yes">
+                            <span>Yes, I'm pre-approved/have funds ready</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'financing', 'no')">
+                            <input type="radio" name="financing" value="no">
+                            <span>No, but I'm working on it</span>
+                        </label>
+                        <label class="radio-option" onclick="selectRadio(this, 'financing', 'na')">
+                            <input type="radio" name="financing" value="na">
+                            <span>Not applicable (leasing only)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-title">How did you hear about us?</div>
+                    <select class="form-input" name="source" onchange="validatePage4()">
+                        <option value="">Please select</option>
+                        <option value="google">Google Search</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="referral">Referral</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="btn-container">
+                    <button type="button" class="back-btn" onclick="prevPage()">Back</button>
+                    <button type="button" class="btn" onclick="submitForm()" id="page4Next" disabled>Get Exclusive Access</button>
+                </div>
+            </div>
+            
+            <!-- Success Page -->
+            <div class="page" id="successPage">
+                <div class="success-page">
+                    <div class="success-icon">✓</div>
+                    <h2 style="margin-bottom: 15px; color: #2d3748;">Thank You!</h2>
+                    <p style="color: #4a5568; margin-bottom: 20px;">You'll receive exclusive property opportunities directly to your inbox within 24 hours.</p>
+                    <p style="color: #4a5568; font-size: 14px;">A qualified commercial property specialist will contact you if we have immediate matches for your requirements.</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        let currentPage = 1;
+        const totalPages = 4;
+        
+        // REPLACE THESE WITH YOUR ACTUAL VALUES
+        const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+        const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
+        
+        function updateProgress() {
+            const progress = (currentPage / totalPages) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        function selectRadio(element, name, value) {
+            // Remove selected class from all options in this group
+            const group = element.closest('.radio-group');
+            group.querySelectorAll('.radio-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            
+            // Validate current page
+            if (currentPage === 1) validatePage1();
+            if (currentPage === 3) validatePage3();
+            if (currentPage === 4) validatePage4();
+        }
+        
+        function toggleCheckbox(element, name, value) {
+            const checkbox = element.querySelector('input');
+            checkbox.checked = !checkbox.checked;
+            
+            if (checkbox.checked) {
+                element.classList.add('selected');
+            } else {
+                element.classList.remove('selected');
+            }
+            
+            validatePage2();
+        }
+        
+        function validatePage1() {
+            const propertyType = document.querySelector('input[name="propertyType"]:checked');
+            const intent = document.querySelector('input[name="intent"]:checked');
+            const nextBtn = document.getElementById('page1Next');
+            
+            if (propertyType && intent) {
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.disabled = true;
+            }
+        }
+        
+        function validatePage2() {
+            const locations = document.querySelectorAll('input[name="location"]:checked');
+            const budget = document.querySelector('select[name="budget"]').value;
+            const nextBtn = document.getElementById('page2Next');
+            
+            if (locations.length > 0 && budget) {
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.disabled = true;
+            }
+        }
+        
+        function validatePage3() {
+            const timeline = document.querySelector('input[name="timeline"]:checked');
+            const firstName = document.querySelector('input[name="firstName"]').value.trim();
+            const lastName = document.querySelector('input[name="lastName"]').value.trim();
+            const email = document.querySelector('input[name="email"]').value.trim();
+            const phone = document.querySelector('input[name="phone"]').value.trim();
+            const nextBtn = document.getElementById('page3Next');
+            
+            if (timeline && firstName && lastName && email && phone) {
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.disabled = true;
+            }
+        }
+        
+        function validatePage4() {
+            const financing = document.querySelector('input[name="financing"]:checked');
+            const source = document.querySelector('select[name="source"]').value;
+            const nextBtn = document.getElementById('page4Next');
+            
+            if (financing && source) {
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.disabled = true;
+            }
+        }
+        
+        function nextPage() {
+            if (currentPage < totalPages) {
+                document.getElementById('page' + currentPage).classList.remove('active');
+                currentPage++;
+                document.getElementById('page' + currentPage).classList.add('active');
+                updateProgress();
+            }
+        }
+        
+        function prevPage() {
+            if (currentPage > 1) {
+                document.getElementById('page' + currentPage).classList.remove('active');
+                currentPage--;
+                document.getElementById('page' + currentPage).classList.add('active');
+                updateProgress();
+            }
+        }
+        
+        async function submitForm() {
+            // Disable submit button to prevent double submission
+            const submitBtn = document.getElementById('page4Next');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Collect all form data
+            const formData = new FormData(document.getElementById('leadForm'));
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Add location array
+            const locations = [];
+            document.querySelectorAll('input[name="location"]:checked').forEach(checkbox => {
+                locations.push(checkbox.value);
+            });
+            data.locations = locations;
+            
+            // Calculate lead score
+            const leadScore = calculateLeadScore(data);
+            
+            // Send to Telegram
+            try {
+                await sendToTelegram(data, leadScore);
+                
+                // Show success page
+                document.getElementById('page' + currentPage).classList.remove('active');
+                document.getElementById('successPage').classList.add('active');
+                document.getElementById('progressFill').style.width = '100%';
+                
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                alert('There was an error submitting your form. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Get Exclusive Access';
+            }
+        }
+        
+        async function sendToTelegram(data, leadScore) {
+            // Format the message
+            const message = formatTelegramMessage(data, leadScore);
+            
+            // Send to Telegram
+            const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            
+            const response = await fetch(telegramUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to send to Telegram');
+            }
+        }
+        
+        function formatTelegramMessage(data, leadScore) {
+            const locations = data.locations.join(', ');
+            
+            return `
+🏢 <b>NEW COMMERCIAL PROPERTY LEAD</b>
+💰 <b>Lead Value: ${leadScore.tier}</b>
+
+👤 <b>Contact Details:</b>
+Name: ${data.firstName} ${data.lastName}
+Email: ${data.email}
+Phone: ${data.phone}
+${data.company ? `Company: ${data.company}` : ''}
+
+🏗️ <b>Property Requirements:</b>
+Type: ${data.propertyType}
+Intent: ${data.intent}
+Budget: ${data.budget}
+Timeline: ${data.timeline}
+Locations: ${locations}
+
+💳 <b>Financing:</b> ${data.financing}
+📢 <b>Source:</b> ${data.source}
+
+📊 <b>Lead Score:</b> ${leadScore.score}/150
+⭐ <b>Tier:</b> ${leadScore.tier}
+
+🕐 <b>Submitted:</b> ${new Date().toLocaleString('en-AU', {timeZone: 'Australia/Melbourne'})}
+            `.trim();
+        }
+        
+        function calculateLeadScore(data) {
+            let score = 0;
+            let tier = 'Standard';
+            
+            // Budget scoring
+            if (data.budget === '5m-plus') score += 100;
+            else if (data.budget === '2m-5m') score += 80;
+            else if (data.budget === '1m-2m') score += 60;
+            else if (data.budget === '500k-1m') score += 40;
+            else if (data.budget === 'under500k') score += 20;
+            
+            // Timeline scoring
+            if (data.timeline === 'within30') score += 50;
+            else if (data.timeline === '1-3months') score += 40;
+            else if (data.timeline === '3-6months') score += 20;
+            
+            // Financing scoring
+            if (data.financing === 'yes') score += 30;
+            
+            // Location premium (CBD gets bonus)
+            if (data.locations && data.locations.includes('cbd')) score += 20;
+            
+            // Determine tier
+            if (score >= 120) tier = 'Premium ($300+)';
+            else if (score >= 80) tier = 'Hot ($200+)';
+            else if (score >= 40) tier = 'Qualified ($100+)';
+            else tier = 'Standard ($75)';
+            
+            return { score, tier };
+        }
+        
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
