@@ -434,9 +434,8 @@
         let currentPage = 1;
         const totalPages = 4;
         
-        // REPLACE THESE WITH YOUR ACTUAL VALUES
-        const TELEGRAM_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
-        const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
+        // Make.com webhook URL
+        const MAKE_WEBHOOK_URL = 'https://hook.eu2.make.com/90e7cjteqk1vnqvmjqnq2cgxq1nl9rwc';
         
         function updateProgress() {
             const progress = (currentPage / totalPages) * 100;
@@ -566,9 +565,9 @@
             // Calculate lead score
             const leadScore = calculateLeadScore(data);
             
-            // Send to Telegram
+            // Send to Make.com webhook (handles Telegram + Google Sheets)
             try {
-                await sendToTelegram(data, leadScore);
+                await sendToMake(data, leadScore);
                 
                 // Show success page
                 document.getElementById('page' + currentPage).classList.remove('active');
@@ -576,68 +575,52 @@
                 document.getElementById('progressFill').style.width = '100%';
                 
             } catch (error) {
-                console.error('Error sending to Telegram:', error);
+                console.error('Error sending data:', error);
                 alert('There was an error submitting your form. Please try again.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Get Exclusive Access';
             }
         }
         
-        async function sendToTelegram(data, leadScore) {
-            // Format the message
-            const message = formatTelegramMessage(data, leadScore);
+        async function sendToMake(data, leadScore) {
+            const locations = data.locations.join(', ');
             
-            // Send to Telegram
-            const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            const payload = {
+                // Contact details
+                firstName: data.firstName,
+                lastName: data.lastName,
+                email: data.email,
+                phone: data.phone,
+                company: data.company || '',
+                
+                // Property requirements
+                propertyType: data.propertyType,
+                intent: data.intent,
+                locations: locations,
+                budget: data.budget,
+                timeline: data.timeline,
+                financing: data.financing,
+                source: data.source,
+                
+                // Lead scoring
+                leadScore: leadScore.score,
+                leadTier: leadScore.tier,
+                timestamp: new Date().toISOString()
+            };
             
-            const response = await fetch(telegramUrl, {
+            const response = await fetch(MAKE_WEBHOOK_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML'
-                })
+                body: JSON.stringify(payload)
             });
             
             if (!response.ok) {
-                throw new Error('Failed to send to Telegram');
+                throw new Error('Failed to send to Make.com');
             }
         }
         
-        function formatTelegramMessage(data, leadScore) {
-            const locations = data.locations.join(', ');
-            
-            return `
-🏢 <b>NEW COMMERCIAL PROPERTY LEAD</b>
-💰 <b>Lead Value: ${leadScore.tier}</b>
-
-👤 <b>Contact Details:</b>
-Name: ${data.firstName} ${data.lastName}
-Email: ${data.email}
-Phone: ${data.phone}
-${data.company ? `Company: ${data.company}` : ''}
-
-🏗️ <b>Property Requirements:</b>
-Type: ${data.propertyType}
-Intent: ${data.intent}
-Budget: ${data.budget}
-Timeline: ${data.timeline}
-Locations: ${locations}
-
-💳 <b>Financing:</b> ${data.financing}
-📢 <b>Source:</b> ${data.source}
-
-📊 <b>Lead Score:</b> ${leadScore.score}/150
-⭐ <b>Tier:</b> ${leadScore.tier}
-
-🕐 <b>Submitted:</b> ${new Date().toLocaleString('en-AU', {timeZone: 'Australia/Melbourne'})}
-            `.trim();
-        }
-        
-        function calculateLeadScore(data) {
             let score = 0;
             let tier = 'Standard';
             
