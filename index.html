@@ -241,23 +241,23 @@
                 <div class="question">
                     <div class="question-title">What type of commercial property interests you?</div>
                     <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'office')">
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
                             <input type="radio" name="propertyType" value="office">
                             <span>Office Space</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'retail')">
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
                             <input type="radio" name="propertyType" value="retail">
                             <span>Retail/Shopfront</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'industrial')">
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
                             <input type="radio" name="propertyType" value="industrial">
                             <span>Industrial/Warehouse</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'investment')">
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
                             <input type="radio" name="propertyType" value="investment">
                             <span>Investment Property</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType', 'land')">
+                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
                             <input type="radio" name="propertyType" value="land">
                             <span>Land/Development</span>
                         </label>
@@ -267,11 +267,11 @@
                 <div class="question">
                     <div class="question-title">Are you looking to:</div>
                     <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'intent', 'purchase')">
+                        <label class="radio-option" onclick="selectRadio(this, 'intent')">
                             <input type="radio" name="intent" value="purchase">
                             <span>Purchase</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'intent', 'lease')">
+                        <label class="radio-option" onclick="selectRadio(this, 'intent')">
                             <input type="radio" name="intent" value="lease">
                             <span>Lease/Rent</span>
                         </label>
@@ -286,27 +286,27 @@
                 <div class="question">
                     <div class="question-title">Which Melbourne areas interest you? (Select all that apply)</div>
                     <div class="checkbox-group">
-                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'cbd')">
+                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
                             <input type="checkbox" name="location" value="cbd">
                             <span>Melbourne CBD</span>
                         </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'innerEast')">
+                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
                             <input type="checkbox" name="location" value="innerEast">
                             <span>Inner East (Richmond, Prahran, South Yarra)</span>
                         </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'innerWest')">
+                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
                             <input type="checkbox" name="location" value="innerWest">
                             <span>Inner West (Footscray, Williamstown, Port Melbourne)</span>
                         </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'north')">
+                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
                             <input type="checkbox" name="location" value="north">
                             <span>North (Preston, Coburg, Brunswick)</span>
                         </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'southEast')">
+                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
                             <input type="checkbox" name="location" value="southEast">
                             <span>South East (Glen Waverley, Dandenong, Oakleigh)</span>
                         </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this, 'location', 'outerSuburbs')">
+                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
                             <input type="checkbox" name="location" value="outerSuburbs">
                             <span>Outer Suburbs</span>
                         </label>
@@ -337,23 +337,23 @@
                 <div class="question">
                     <div class="question-title">When do you need to secure a property?</div>
                     <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline', 'within30')">
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
                             <input type="radio" name="timeline" value="within30">
                             <span>Within 30 days</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline', '1-3months')">
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
                             <input type="radio" name="timeline" value="1-3months">
                             <span>1-3 months</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline', '3-6months')">
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
                             <input type="radio" name="timeline" value="3-6months">
                             <span>3-6 months</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline', '6plus')">
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
                             <input type="radio" name="timeline" value="6plus">
                             <span>6+ months</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline', 'exploring')">
+                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
                             <input type="radio" name="timeline" value="exploring">
                             <span>Just exploring options</span>
                         </label>
@@ -385,15 +385,15 @@
                 <div class="question">
                     <div class="question-title">Have you been pre-approved for financing or have funds ready?</div>
                     <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'financing', 'yes')">
+                        <label class="radio-option" onclick="selectRadio(this, 'financing')">
                             <input type="radio" name="financing" value="yes">
                             <span>Yes, I'm pre-approved/have funds ready</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'financing', 'no')">
+                        <label class="radio-option" onclick="selectRadio(this, 'financing')">
                             <input type="radio" name="financing" value="no">
                             <span>No, but I'm working on it</span>
                         </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'financing', 'na')">
+                        <label class="radio-option" onclick="selectRadio(this, 'financing')">
                             <input type="radio" name="financing" value="na">
                             <span>Not applicable (leasing only)</span>
                         </label>
@@ -442,24 +442,21 @@
             document.getElementById('progressFill').style.width = progress + '%';
         }
         
-        function selectRadio(element, name, value) {
-            // Remove selected class from all options in this group
+        function selectRadio(element, groupName) {
             const group = element.closest('.radio-group');
             group.querySelectorAll('.radio-option').forEach(option => {
                 option.classList.remove('selected');
             });
             
-            // Add selected class to clicked option
             element.classList.add('selected');
             element.querySelector('input').checked = true;
             
-            // Validate current page
             if (currentPage === 1) validatePage1();
             if (currentPage === 3) validatePage3();
             if (currentPage === 4) validatePage4();
         }
         
-        function toggleCheckbox(element, name, value) {
+        function toggleCheckbox(element) {
             const checkbox = element.querySelector('input');
             checkbox.checked = !checkbox.checked;
             
@@ -477,11 +474,7 @@
             const intent = document.querySelector('input[name="intent"]:checked');
             const nextBtn = document.getElementById('page1Next');
             
-            if (propertyType && intent) {
-                nextBtn.disabled = false;
-            } else {
-                nextBtn.disabled = true;
-            }
+            nextBtn.disabled = !(propertyType && intent);
         }
         
         function validatePage2() {
@@ -489,11 +482,7 @@
             const budget = document.querySelector('select[name="budget"]').value;
             const nextBtn = document.getElementById('page2Next');
             
-            if (locations.length > 0 && budget) {
-                nextBtn.disabled = false;
-            } else {
-                nextBtn.disabled = true;
-            }
+            nextBtn.disabled = !(locations.length > 0 && budget);
         }
         
         function validatePage3() {
@@ -504,11 +493,7 @@
             const phone = document.querySelector('input[name="phone"]').value.trim();
             const nextBtn = document.getElementById('page3Next');
             
-            if (timeline && firstName && lastName && email && phone) {
-                nextBtn.disabled = false;
-            } else {
-                nextBtn.disabled = true;
-            }
+            nextBtn.disabled = !(timeline && firstName && lastName && email && phone);
         }
         
         function validatePage4() {
@@ -516,11 +501,7 @@
             const source = document.querySelector('select[name="source"]').value;
             const nextBtn = document.getElementById('page4Next');
             
-            if (financing && source) {
-                nextBtn.disabled = false;
-            } else {
-                nextBtn.disabled = true;
-            }
+            nextBtn.disabled = !(financing && source);
         }
         
         function nextPage() {
@@ -542,12 +523,10 @@
         }
         
         async function submitForm() {
-            // Disable submit button to prevent double submission
             const submitBtn = document.getElementById('page4Next');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             
-            // Collect all form data
             const formData = new FormData(document.getElementById('leadForm'));
             const data = {};
             
@@ -555,21 +534,17 @@
                 data[key] = value;
             }
             
-            // Add location array
             const locations = [];
             document.querySelectorAll('input[name="location"]:checked').forEach(checkbox => {
                 locations.push(checkbox.value);
             });
             data.locations = locations;
             
-            // Calculate lead score
             const leadScore = calculateLeadScore(data);
             
-            // Send to Make.com webhook (handles Telegram + Google Sheets)
             try {
                 await sendToMake(data, leadScore);
                 
-                // Show success page
                 document.getElementById('page' + currentPage).classList.remove('active');
                 document.getElementById('successPage').classList.add('active');
                 document.getElementById('progressFill').style.width = '100%';
@@ -586,14 +561,11 @@
             const locations = data.locations.join(', ');
             
             const payload = {
-                // Contact details
                 firstName: data.firstName,
                 lastName: data.lastName,
                 email: data.email,
                 phone: data.phone,
                 company: data.company || '',
-                
-                // Property requirements
                 propertyType: data.propertyType,
                 intent: data.intent,
                 locations: locations,
@@ -601,8 +573,6 @@
                 timeline: data.timeline,
                 financing: data.financing,
                 source: data.source,
-                
-                // Lead scoring
                 leadScore: leadScore.score,
                 leadTier: leadScore.tier,
                 timestamp: new Date().toISOString()
@@ -621,28 +591,24 @@
             }
         }
         
+        function calculateLeadScore(data) {
             let score = 0;
             let tier = 'Standard';
             
-            // Budget scoring
             if (data.budget === '5m-plus') score += 100;
             else if (data.budget === '2m-5m') score += 80;
             else if (data.budget === '1m-2m') score += 60;
             else if (data.budget === '500k-1m') score += 40;
             else if (data.budget === 'under500k') score += 20;
             
-            // Timeline scoring
             if (data.timeline === 'within30') score += 50;
             else if (data.timeline === '1-3months') score += 40;
             else if (data.timeline === '3-6months') score += 20;
             
-            // Financing scoring
             if (data.financing === 'yes') score += 30;
             
-            // Location premium (CBD gets bonus)
             if (data.locations && data.locations.includes('cbd')) score += 20;
             
-            // Determine tier
             if (score >= 120) tier = 'Premium ($300+)';
             else if (score >= 80) tier = 'Hot ($200+)';
             else if (score >= 40) tier = 'Qualified ($100+)';
@@ -651,7 +617,7 @@
             return { score, tier };
         }
         
-        // Initialize
+        // Initialize form
         updateProgress();
     </script>
 </body>
