@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melbourne Commercial Property Investment Hub</title>
+    <title>Melbourne Commercial Property Investment Hub - Expert Tools & Reports</title>
+    <meta name="description" content="Professional commercial property investment tools, calculators and free market reports for Melbourne investors. Connect with top commercial property specialists.">
     <style>
         * {
             margin: 0;
@@ -12,19 +13,19 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
+            color: #1f2937;
             background: #ffffff;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
-        /* Header */
+        /* ===== HEADER ===== */
         .header {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
@@ -45,6 +46,7 @@
             font-size: 24px;
             font-weight: 700;
             color: #1e40af;
+            text-decoration: none;
         }
 
         .nav {
@@ -52,18 +54,19 @@
             gap: 32px;
         }
 
-        .nav a {
-            text-decoration: none;
+        .nav-link {
             color: #374151;
+            text-decoration: none;
             font-weight: 500;
             transition: color 0.2s ease;
+            cursor: pointer;
         }
 
-        .nav a:hover {
+        .nav-link:hover {
             color: #1e40af;
         }
 
-        /* Hero Section */
+        /* ===== HERO SECTION ===== */
         .hero {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
             color: white;
@@ -95,7 +98,7 @@
             line-height: 1.1;
         }
 
-        .hero p {
+        .hero-subtitle {
             font-size: 20px;
             margin-bottom: 32px;
             opacity: 0.9;
@@ -104,7 +107,7 @@
             margin-right: auto;
         }
 
-        .cta-primary {
+        .btn-primary {
             background: #ef4444;
             color: white;
             padding: 16px 32px;
@@ -119,16 +122,15 @@
             box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
         }
 
-        .cta-primary:hover {
+        .btn-primary:hover {
             background: #dc2626;
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(239, 68, 68, 0.4);
         }
 
-        /* Tools Section */
-        .tools-section {
+        /* ===== SECTION STYLING ===== */
+        .section {
             padding: 80px 0;
-            background: #f8fafc;
         }
 
         .section-header {
@@ -150,6 +152,15 @@
             margin: 0 auto;
         }
 
+        .bg-gray {
+            background: #f8fafc;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        /* ===== CALCULATOR TOOLS ===== */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -160,41 +171,45 @@
             background: white;
             border-radius: 16px;
             padding: 32px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             border: 1px solid #e5e7eb;
         }
 
         .tool-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             transform: translateY(-4px);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
         }
 
         .tool-icon {
             font-size: 32px;
-            margin-bottom: 16px;
+            margin-right: 16px;
         }
 
-        .tool-card h3 {
+        .tool-title {
             font-size: 20px;
             font-weight: 600;
             color: #1f2937;
-            margin-bottom: 16px;
         }
 
-        .form-group {
+        .input-group {
             margin-bottom: 20px;
         }
 
-        .form-group label {
+        .input-label {
             display: block;
             font-weight: 500;
             color: #374151;
             margin-bottom: 8px;
         }
 
-        .form-group input,
-        .form-group select {
+        .input-field {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid #e5e7eb;
@@ -204,14 +219,13 @@
             background: white;
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .input-field:focus {
             outline: none;
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        .calc-button {
+        .btn-calculate {
             background: #1e40af;
             color: white;
             padding: 12px 24px;
@@ -221,13 +235,14 @@
             cursor: pointer;
             transition: background 0.2s ease;
             width: 100%;
+            font-size: 16px;
         }
 
-        .calc-button:hover {
+        .btn-calculate:hover {
             background: #1d4ed8;
         }
 
-        .calc-result {
+        .result-box {
             margin-top: 20px;
             padding: 20px;
             background: #ecfdf5;
@@ -236,16 +251,35 @@
             display: none;
         }
 
-        .calc-result.show {
+        .result-box.show {
             display: block;
         }
 
-        /* Investment Guide Section */
-        .investment-guide {
-            padding: 80px 0;
-            background: white;
+        .result-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #065f46;
+            margin-bottom: 12px;
         }
 
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 4px 0;
+        }
+
+        .result-label {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .result-value {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        /* ===== INVESTMENT GUIDE ===== */
         .guide-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -258,7 +292,6 @@
             border-radius: 16px;
             padding: 32px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .guide-card:hover {
@@ -293,12 +326,7 @@
             line-height: 1.6;
         }
 
-        /* Market Insights Section */
-        .market-insights {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-        }
-
+        /* ===== MARKET INSIGHTS ===== */
         .insights-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -331,14 +359,14 @@
             line-height: 1.6;
         }
 
-        .insights-stats {
+        .stats-card {
             background: white;
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .insights-stats h3 {
+        .stats-title {
             font-size: 24px;
             font-weight: 600;
             color: #1f2937;
@@ -372,7 +400,7 @@
             font-weight: 500;
         }
 
-        /* Lead Magnet Section */
+        /* ===== LEAD MAGNET ===== */
         .lead-magnet {
             background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
             color: white;
@@ -440,18 +468,18 @@
             font-size: 14px;
         }
 
-        /* Lead Form Section */
+        /* ===== LEAD FORM ===== */
         .form-section {
             padding: 80px 0;
             background: #f1f5f9;
-            display: none !important;
+            display: none;
             opacity: 0;
             transform: translateY(50px);
             transition: all 0.6s ease;
         }
 
         .form-section.show {
-            display: block !important;
+            display: block;
             opacity: 1;
             transform: translateY(0);
         }
@@ -480,64 +508,65 @@
             font-size: 16px;
         }
 
-        .lead-form-grid {
+        .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
-        .form-field {
+        .form-group {
             display: flex;
             flex-direction: column;
         }
 
-        .form-field.full-width {
+        .form-group.full-width {
             grid-column: 1 / -1;
         }
 
-        .form-field label {
+        .form-label {
             font-weight: 600;
             color: #374151;
             margin-bottom: 8px;
         }
 
-        .form-field input,
-        .form-field select,
-        .form-field textarea {
+        .form-input,
+        .form-select,
+        .form-textarea {
             padding: 14px 16px;
             border: 2px solid #e5e7eb;
             border-radius: 10px;
             font-size: 16px;
             transition: all 0.2s ease;
+            background: white;
         }
 
-        .form-field input:focus,
-        .form-field select:focus,
-        .form-field textarea:focus {
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
             outline: none;
             border-color: #3b82f6;
             box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
         }
 
-        .form-field textarea {
+        .form-textarea {
             min-height: 120px;
             resize: vertical;
         }
 
-        .checkbox-field {
+        .checkbox-group {
             display: flex;
             align-items: flex-start;
             gap: 12px;
             margin-top: 24px;
         }
 
-        .checkbox-field input[type="checkbox"] {
+        .checkbox-input {
             width: 20px;
             height: 20px;
             margin-top: 2px;
         }
 
-        .submit-button {
+        .btn-submit {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 18px 32px;
@@ -551,12 +580,12 @@
             margin-top: 32px;
         }
 
-        .submit-button:hover {
+        .btn-submit:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
         }
 
-        .submit-button:disabled {
+        .btn-submit:disabled {
             opacity: 0.7;
             cursor: not-allowed;
             transform: none;
@@ -571,9 +600,10 @@
             text-align: center;
             margin-bottom: 24px;
             display: none;
+            font-weight: 600;
         }
 
-        .loading-spinner {
+        .loading-state {
             display: none;
             text-align: center;
             margin-top: 20px;
@@ -594,7 +624,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Footer */
+        /* ===== FOOTER ===== */
         .footer {
             background: #1f2937;
             color: white;
@@ -602,12 +632,13 @@
             text-align: center;
         }
 
-        .footer-content {
+        .footer-text {
             max-width: 800px;
             margin: 0 auto;
+            opacity: 0.8;
         }
 
-        /* Responsive Design */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 16px;
@@ -617,7 +648,7 @@
                 font-size: 32px;
             }
 
-            .hero p {
+            .hero-subtitle {
                 font-size: 18px;
             }
 
@@ -625,11 +656,13 @@
                 font-size: 28px;
             }
 
-            .tools-grid {
+            .tools-grid,
+            .guide-grid {
                 grid-template-columns: 1fr;
             }
 
-            .tool-card {
+            .tool-card,
+            .guide-card {
                 padding: 24px;
             }
 
@@ -637,20 +670,12 @@
                 padding: 32px 24px;
             }
 
-            .lead-form-grid {
+            .form-grid {
                 grid-template-columns: 1fr;
             }
 
             .nav {
                 display: none;
-            }
-
-            .guide-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .guide-card {
-                padding: 24px;
             }
 
             .insights-content {
@@ -662,7 +687,7 @@
                 font-size: 28px;
             }
 
-            .insights-stats {
+            .stats-card {
                 padding: 32px 24px;
             }
 
@@ -674,6 +699,14 @@
             .stat-number {
                 font-size: 24px;
             }
+
+            .magnet-title {
+                font-size: 32px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -682,11 +715,11 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">PropertyPro Melbourne</div>
+                <a href="#" class="logo">PropertyPro Melbourne</a>
                 <nav class="nav">
-                    <a href="#tools">Investment Tools</a>
-                    <a href="#guide">Investment Guide</a>
-                    <a href="#report">Free Report</a>
+                    <span class="nav-link" data-scroll="tools">Investment Tools</span>
+                    <span class="nav-link" data-scroll="guide">Investment Guide</span>
+                    <span class="nav-link" data-scroll="report">Free Report</span>
                 </nav>
             </div>
         </div>
@@ -696,58 +729,37 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Melbourne's #1 Commercial Property Investment Hub</h1>
-                <p>Discover high-yield commercial properties with our expert tools and connect with Melbourne's top-performing agents</p>
-                <a href="#report" class="cta-primary">Get Your Free Investment Report</a>
+                <h1>Melbourne's Leading Commercial Property Investment Hub</h1>
+                <p class="hero-subtitle">Professional investment tools, expert market insights, and premium property opportunities for serious commercial investors</p>
+                <button class="btn-primary" id="hero-cta">Get Your Free Investment Report</button>
             </div>
         </div>
     </section>
 
     <!-- Investment Tools Section -->
-    <section id="tools" class="tools-section">
+    <section id="tools" class="section bg-gray">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Professional Investment Calculators</h2>
-                <p class="section-subtitle">Make informed decisions with our suite of commercial property analysis tools</p>
+                <p class="section-subtitle">Make informed investment decisions with our comprehensive suite of commercial property analysis tools</p>
             </div>
 
             <div class="tools-grid">
-                <!-- Loan Repayment Calculator -->
+                <!-- Loan Calculator -->
                 <div class="tool-card">
-                    <div class="tool-icon">🏢</div>
-                    <h3>Commercial Loan Calculator</h3>
-                    
-                    <div class="form-group">
-                        <label>Purchase Price ($)</label>
-                        <input type="number" id="purchase-price" placeholder="1,500,000">
+                    <div class="tool-header">
+                        <div class="tool-icon">🏢</div>
+                        <div class="tool-title">Commercial Loan Calculator</div>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Deposit Percentage (%)</label>
-                        <input type="number" id="deposit-percent" placeholder="30" min="0" max="100">
+                    <div class="input-group">
+                        <label class="input-label">Purchase Price ($)</label>
+                        <input type="number" class="input-field" id="loan-price" placeholder="1,500,000">
                     </div>
                     
-                    <div class="form-group">
-                        <label>Interest Rate (% p.a.)</label>
-                        <input type="number" id="interest-rate" placeholder="6.5" step="0.1">
+                    <div class="input-group">
+                        <label class="input-label">Deposit (%)</label>
+                        <input type="number" class="input-field" id="loan-deposit" placeholder="30" min="0" max="100">
                     </div>
                     
-                    <div class="form-group">
-                        <label>Loan Term (years)</label>
-                        <input type="number" id="loan-term" placeholder="20">
-                    </div>
-                    
-                    <button class="calc-button" onclick="calculateLoan()">Calculate Repayments</button>
-                    
-                    <div id="loan-result" class="calc-result"></div>
-                </div>
-
-                <!-- Rental Yield Calculator -->
-                <div class="tool-card">
-                    <div class="tool-icon">📊</div>
-                    <h3>Rental Yield Calculator</h3>
-                    
-                    <div class="form-group">
-                        <label>Property Value ($)</label>
-                        <input type="number" id="property-value" placeholder="1,500,000">
-                   
+                    <div 
