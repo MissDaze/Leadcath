@@ -3,622 +3,751 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melbourne Commercial Property - Exclusive Access</title>
+    <title>Melbourne Commercial Property Investment Hub</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            min-height: 100vh;
-            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
         }
-        
+
         .container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+            padding: 0 24px;
         }
-        
+
+        /* Header */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 16px 0;
         }
-        
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .form-container {
-            padding: 40px 30px;
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease-in;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .question {
-            margin-bottom: 30px;
-        }
-        
-        .question-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 15px;
-        }
-        
-        .radio-group, .checkbox-group {
-            display: grid;
-            gap: 12px;
-        }
-        
-        .radio-option, .checkbox-option {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .radio-option:hover, .checkbox-option:hover {
-            border-color: #667eea;
-            background: #f8faff;
-        }
-        
-        .radio-option.selected, .checkbox-option.selected {
-            border-color: #667eea;
-            background: #f8faff;
-        }
-        
-        .radio-option input, .checkbox-option input {
-            margin-right: 12px;
-            transform: scale(1.2);
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            width: 100%;
-            margin-top: 20px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            height: 4px;
-            background: #e2e8f0;
-            margin-bottom: 30px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-        }
-        
-        .back-btn {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            margin-right: 15px;
-        }
-        
-        .btn-container {
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 30px;
         }
-        
-        .input-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e40af;
         }
-        
-        @media (max-width: 600px) {
-            .input-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                margin: 0;
-                border-radius: 0;
-            }
-            
-            .header, .form-container {
-                padding: 30px 20px;
-            }
+
+        .nav {
+            display: flex;
+            gap: 32px;
         }
-        
-        .success-page {
+
+        .nav a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: #1e40af;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            color: white;
+            padding: 80px 0;
             text-align: center;
-            padding: 60px 30px;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #10b981;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><rect width="2" height="2" x="2" y="2"/><rect width="2" height="2" x="22" y="22"/><rect width="2" height="2" x="42" y="42"/></g></svg>') repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-primary {
+            background: #ef4444;
+            color: white;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .cta-primary:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+        }
+
+        .tool-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .tool-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .calc-button {
+            background: #1e40af;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            width: 100%;
+        }
+
+        .calc-button:hover {
+            background: #1d4ed8;
+        }
+
+        .calc-result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .calc-result.show {
+            display: block;
+        }
+
+        /* Investment Guide Section */
+        .investment-guide {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .guide-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .guide-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
+        }
+
+        .guide-number {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .guide-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .guide-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Market Insights Section */
+        .market-insights {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        .insights-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .insights-text h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 32px;
+        }
+
+        .insight-points {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .insight-point h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .insight-point p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .insights-stats {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .insights-stats h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Lead Magnet Section */
+        .lead-magnet {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
             color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .lead-magnet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.03"><circle cx="20" cy="20" r="2"/></g></svg>') repeat;
+        }
+
+        .magnet-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .magnet-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .magnet-subtitle {
+            font-size: 20px;
+            margin-bottom: 48px;
+            opacity: 0.9;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: left;
+        }
+
+        .benefit-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .benefit-card p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        /* Lead Form Section */
+        .form-section {
+            padding: 80px 0;
+            background: #f1f5f9;
+            display: none !important;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .form-section.show {
+            display: block !important;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .form-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .form-description {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .lead-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-field label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-field textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-field {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .checkbox-field input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 18px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-top: 32px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 24px;
+            display: none;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-card {
+                padding: 24px;
+            }
+
+            .form-container {
+                padding: 32px 24px;
+            }
+
+            .lead-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-card {
+                padding: 24px;
+            }
+
+            .insights-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .insights-text h2 {
+                font-size: 28px;
+            }
+
+            .insights-stats {
+                padding: 32px 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Get Exclusive Access to Melbourne Commercial Properties</h1>
-            <p>See properties 30-60 days before they hit the public market</p>
-            <div class="badge">✓ No obligation • Free service</div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">PropertyPro Melbourne</div>
+                <nav class="nav">
+                    <a href="#tools">Investment Tools</a>
+                    <a href="#guide">Investment Guide</a>
+                    <a href="#report">Free Report</a>
+                </nav>
+            </div>
         </div>
-        
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Melbourne's #1 Commercial Property Investment Hub</h1>
+                <p>Discover high-yield commercial properties with our expert tools and connect with Melbourne's top-performing agents</p>
+                <a href="#report" class="cta-primary">Get Your Free Investment Report</a>
+            </div>
         </div>
-        
-        <form id="leadForm" class="form-container">
-            <!-- Page 1: Property Type & Intent -->
-            <div class="page active" id="page1">
-                <div class="question">
-                    <div class="question-title">What type of commercial property interests you?</div>
-                    <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
-                            <input type="radio" name="propertyType" value="office">
-                            <span>Office Space</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
-                            <input type="radio" name="propertyType" value="retail">
-                            <span>Retail/Shopfront</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
-                            <input type="radio" name="propertyType" value="industrial">
-                            <span>Industrial/Warehouse</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
-                            <input type="radio" name="propertyType" value="investment">
-                            <span>Investment Property</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'propertyType')">
-                            <input type="radio" name="propertyType" value="land">
-                            <span>Land/Development</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="question">
-                    <div class="question-title">Are you looking to:</div>
-                    <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'intent')">
-                            <input type="radio" name="intent" value="purchase">
-                            <span>Purchase</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'intent')">
-                            <input type="radio" name="intent" value="lease">
-                            <span>Lease/Rent</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <button type="button" class="btn" onclick="nextPage()" id="page1Next" disabled>Continue</button>
+    </section>
+
+    <!-- Investment Tools Section -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Investment Calculators</h2>
+                <p class="section-subtitle">Make informed decisions with our suite of commercial property analysis tools</p>
             </div>
-            
-            <!-- Page 2: Location & Budget -->
-            <div class="page" id="page2">
-                <div class="question">
-                    <div class="question-title">Which Melbourne areas interest you? (Select all that apply)</div>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
-                            <input type="checkbox" name="location" value="cbd">
-                            <span>Melbourne CBD</span>
-                        </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
-                            <input type="checkbox" name="location" value="innerEast">
-                            <span>Inner East (Richmond, Prahran, South Yarra)</span>
-                        </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
-                            <input type="checkbox" name="location" value="innerWest">
-                            <span>Inner West (Footscray, Williamstown, Port Melbourne)</span>
-                        </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
-                            <input type="checkbox" name="location" value="north">
-                            <span>North (Preston, Coburg, Brunswick)</span>
-                        </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
-                            <input type="checkbox" name="location" value="southEast">
-                            <span>South East (Glen Waverley, Dandenong, Oakleigh)</span>
-                        </label>
-                        <label class="checkbox-option" onclick="toggleCheckbox(this)">
-                            <input type="checkbox" name="location" value="outerSuburbs">
-                            <span>Outer Suburbs</span>
-                        </label>
+
+            <div class="tools-grid">
+                <!-- Loan Repayment Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">🏢</div>
+                    <h3>Commercial Loan Calculator</h3>
+                    
+                    <div class="form-group">
+                        <label>Purchase Price ($)</label>
+                        <input type="number" id="purchase-price" placeholder="1,500,000">
                     </div>
-                </div>
-                
-                <div class="question">
-                    <div class="question-title">Budget range:</div>
-                    <select class="form-input" name="budget" onchange="validatePage2()">
-                        <option value="">Select your budget</option>
-                        <option value="under500k">Under $500,000</option>
-                        <option value="500k-1m">$500,000 - $1,000,000</option>
-                        <option value="1m-2m">$1,000,000 - $2,000,000</option>
-                        <option value="2m-5m">$2,000,000 - $5,000,000</option>
-                        <option value="5m-plus">$5,000,000+</option>
-                        <option value="prefer-not-say">Prefer not to say</option>
-                    </select>
-                </div>
-                
-                <div class="btn-container">
-                    <button type="button" class="back-btn" onclick="prevPage()">Back</button>
-                    <button type="button" class="btn" onclick="nextPage()" id="page2Next" disabled>Continue</button>
-                </div>
-            </div>
-            
-            <!-- Page 3: Timeline & Contact -->
-            <div class="page" id="page3">
-                <div class="question">
-                    <div class="question-title">When do you need to secure a property?</div>
-                    <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
-                            <input type="radio" name="timeline" value="within30">
-                            <span>Within 30 days</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
-                            <input type="radio" name="timeline" value="1-3months">
-                            <span>1-3 months</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
-                            <input type="radio" name="timeline" value="3-6months">
-                            <span>3-6 months</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
-                            <input type="radio" name="timeline" value="6plus">
-                            <span>6+ months</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'timeline')">
-                            <input type="radio" name="timeline" value="exploring">
-                            <span>Just exploring options</span>
-                        </label>
+                    
+                    <div class="form-group">
+                        <label>Deposit Percentage (%)</label>
+                        <input type="number" id="deposit-percent" placeholder="30" min="0" max="100">
                     </div>
-                </div>
-                
-                <div class="question">
-                    <div class="question-title">Your contact details:</div>
-                    <div class="input-row">
-                        <input type="text" class="form-input" name="firstName" placeholder="First Name" oninput="validatePage3()">
-                        <input type="text" class="form-input" name="lastName" placeholder="Last Name" oninput="validatePage3()">
+                    
+                    <div class="form-group">
+                        <label>Interest Rate (% p.a.)</label>
+                        <input type="number" id="interest-rate" placeholder="6.5" step="0.1">
                     </div>
-                    <br>
-                    <input type="email" class="form-input" name="email" placeholder="Email Address" oninput="validatePage3()">
-                    <br>
-                    <input type="tel" class="form-input" name="phone" placeholder="Phone Number" oninput="validatePage3()">
-                    <br>
-                    <input type="text" class="form-input" name="company" placeholder="Company (Optional)">
-                </div>
-                
-                <div class="btn-container">
-                    <button type="button" class="back-btn" onclick="prevPage()">Back</button>
-                    <button type="button" class="btn" onclick="nextPage()" id="page3Next" disabled>Continue</button>
-                </div>
-            </div>
-            
-            <!-- Page 4: Final Qualifier -->
-            <div class="page" id="page4">
-                <div class="question">
-                    <div class="question-title">Have you been pre-approved for financing or have funds ready?</div>
-                    <div class="radio-group">
-                        <label class="radio-option" onclick="selectRadio(this, 'financing')">
-                            <input type="radio" name="financing" value="yes">
-                            <span>Yes, I'm pre-approved/have funds ready</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'financing')">
-                            <input type="radio" name="financing" value="no">
-                            <span>No, but I'm working on it</span>
-                        </label>
-                        <label class="radio-option" onclick="selectRadio(this, 'financing')">
-                            <input type="radio" name="financing" value="na">
-                            <span>Not applicable (leasing only)</span>
-                        </label>
+                    
+                    <div class="form-group">
+                        <label>Loan Term (years)</label>
+                        <input type="number" id="loan-term" placeholder="20">
                     </div>
+                    
+                    <button class="calc-button" onclick="calculateLoan()">Calculate Repayments</button>
+                    
+                    <div id="loan-result" class="calc-result"></div>
                 </div>
-                
-                <div class="question">
-                    <div class="question-title">How did you hear about us?</div>
-                    <select class="form-input" name="source" onchange="validatePage4()">
-                        <option value="">Please select</option>
-                        <option value="google">Google Search</option>
-                        <option value="facebook">Facebook</option>
-                        <option value="linkedin">LinkedIn</option>
-                        <option value="referral">Referral</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="btn-container">
-                    <button type="button" class="back-btn" onclick="prevPage()">Back</button>
-                    <button type="button" class="btn" onclick="submitForm()" id="page4Next" disabled>Get Exclusive Access</button>
-                </div>
-            </div>
-            
-            <!-- Success Page -->
-            <div class="page" id="successPage">
-                <div class="success-page">
-                    <div class="success-icon">✓</div>
-                    <h2 style="margin-bottom: 15px; color: #2d3748;">Thank You!</h2>
-                    <p style="color: #4a5568; margin-bottom: 20px;">You'll receive exclusive property opportunities directly to your inbox within 24 hours.</p>
-                    <p style="color: #4a5568; font-size: 14px;">A qualified commercial property specialist will contact you if we have immediate matches for your requirements.</p>
-                </div>
-            </div>
-        </form>
-    </div>
-    
-    <script>
-        let currentPage = 1;
-        const totalPages = 4;
-        
-        // Make.com webhook URL
-        const MAKE_WEBHOOK_URL = 'https://hook.eu2.make.com/90e7cjteqk1vnqvmjqnq2cgxq1nl9rwc';
-        
-        function updateProgress() {
-            const progress = (currentPage / totalPages) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-        }
-        
-        function selectRadio(element, groupName) {
-            const group = element.closest('.radio-group');
-            group.querySelectorAll('.radio-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            element.classList.add('selected');
-            element.querySelector('input').checked = true;
-            
-            if (currentPage === 1) validatePage1();
-            if (currentPage === 3) validatePage3();
-            if (currentPage === 4) validatePage4();
-        }
-        
-        function toggleCheckbox(element) {
-            const checkbox = element.querySelector('input');
-            checkbox.checked = !checkbox.checked;
-            
-            if (checkbox.checked) {
-                element.classList.add('selected');
-            } else {
-                element.classList.remove('selected');
-            }
-            
-            validatePage2();
-        }
-        
-        function validatePage1() {
-            const propertyType = document.querySelector('input[name="propertyType"]:checked');
-            const intent = document.querySelector('input[name="intent"]:checked');
-            const nextBtn = document.getElementById('page1Next');
-            
-            nextBtn.disabled = !(propertyType && intent);
-        }
-        
-        function validatePage2() {
-            const locations = document.querySelectorAll('input[name="location"]:checked');
-            const budget = document.querySelector('select[name="budget"]').value;
-            const nextBtn = document.getElementById('page2Next');
-            
-            nextBtn.disabled = !(locations.length > 0 && budget);
-        }
-        
-        function validatePage3() {
-            const timeline = document.querySelector('input[name="timeline"]:checked');
-            const firstName = document.querySelector('input[name="firstName"]').value.trim();
-            const lastName = document.querySelector('input[name="lastName"]').value.trim();
-            const email = document.querySelector('input[name="email"]').value.trim();
-            const phone = document.querySelector('input[name="phone"]').value.trim();
-            const nextBtn = document.getElementById('page3Next');
-            
-            nextBtn.disabled = !(timeline && firstName && lastName && email && phone);
-        }
-        
-        function validatePage4() {
-            const financing = document.querySelector('input[name="financing"]:checked');
-            const source = document.querySelector('select[name="source"]').value;
-            const nextBtn = document.getElementById('page4Next');
-            
-            nextBtn.disabled = !(financing && source);
-        }
-        
-        function nextPage() {
-            if (currentPage < totalPages) {
-                document.getElementById('page' + currentPage).classList.remove('active');
-                currentPage++;
-                document.getElementById('page' + currentPage).classList.add('active');
-                updateProgress();
-            }
-        }
-        
-        function prevPage() {
-            if (currentPage > 1) {
-                document.getElementById('page' + currentPage).classList.remove('active');
-                currentPage--;
-                document.getElementById('page' + currentPage).classList.add('active');
-                updateProgress();
-            }
-        }
-        
-        async function submitForm() {
-            const submitBtn = document.getElementById('page4Next');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            const formData = new FormData(document.getElementById('leadForm'));
-            const data = {};
-            
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-            
-            const locations = [];
-            document.querySelectorAll('input[name="location"]:checked').forEach(checkbox => {
-                locations.push(checkbox.value);
-            });
-            data.locations = locations;
-            
-            const leadScore = calculateLeadScore(data);
-            
-            try {
-                await sendToMake(data, leadScore);
-                
-                document.getElementById('page' + currentPage).classList.remove('active');
-                document.getElementById('successPage').classList.add('active');
-                document.getElementById('progressFill').style.width = '100%';
-                
-            } catch (error) {
-                console.error('Error sending data:', error);
-                alert('There was an error submitting your form. Please try again.');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Get Exclusive Access';
-            }
-        }
-        
-        async function sendToMake(data, leadScore) {
-            const locations = data.locations.join(', ');
-            
-            const payload = {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
-                phone: data.phone,
-                company: data.company || '',
-                propertyType: data.propertyType,
-                intent: data.intent,
-                locations: locations,
-                budget: data.budget,
-                timeline: data.timeline,
-                financing: data.financing,
-                source: data.source,
-                leadScore: leadScore.score,
-                leadTier: leadScore.tier,
-                timestamp: new Date().toISOString()
-            };
-            
-            const response = await fetch(MAKE_WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            });
-            
-            if (!response.ok) {
-                throw new Error('Failed to send to Make.com');
-            }
-        }
-        
-        function calculateLeadScore(data) {
-            let score = 0;
-            let tier = 'Standard';
-            
-            if (data.budget === '5m-plus') score += 100;
-            else if (data.budget === '2m-5m') score += 80;
-            else if (data.budget === '1m-2m') score += 60;
-            else if (data.budget === '500k-1m') score += 40;
-            else if (data.budget === 'under500k') score += 20;
-            
-            if (data.timeline === 'within30') score += 50;
-            else if (data.timeline === '1-3months') score += 40;
-            else if (data.timeline === '3-6months') score += 20;
-            
-            if (data.financing === 'yes') score += 30;
-            
-            if (data.locations && data.locations.includes('cbd')) score += 20;
-            
-            if (score >= 120) tier = 'Premium ($300+)';
-            else if (score >= 80) tier = 'Hot ($200+)';
-            else if (score >= 40) tier = 'Qualified ($100+)';
-            else tier = 'Standard ($75)';
-            
-            return { score, tier };
-        }
-        
-        // Initialize form
-        updateProgress();
-    </script>
-</body>
-</html>
+
+                <!-- Rental Yield Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>Rental Yield Calculator</h3>
+                    
+                    <div class="form-group">
+                        <label>Property Value ($)</label>
+                        <input type="number" id="property-value" placeholder="1,500,000">
+                   
